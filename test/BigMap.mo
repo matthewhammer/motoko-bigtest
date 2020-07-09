@@ -45,10 +45,21 @@ actor {
       Prim.natToWord32(Prim.nat8ToNat(x))
     };
     // to do -- use all bits in the final hash, not just the first ones
-    blowup(x[0]) << 24 +
-      blowup(x[1]) << 16 +
-      blowup(x[2]) << 8 +
-      blowup(x[3])
+    switch (x.size()) {
+      case 0 0;
+      case 1 blowup(x[1]);
+      case 2 { blowup(x[0]) << 0 +
+                 blowup(x[1]) << 8 };
+      case 3 { blowup(x[0]) << 0 +
+                 blowup(x[1]) << 8 +
+                 blowup(x[2]) << 16 };
+      case _ {
+             blowup(x[0]) << 24 +
+               blowup(x[1]) << 16 +
+               blowup(x[2]) << 8 +
+               blowup(x[3])
+           }
+    }
   };
 
   var db = Database.Database<Key, Val>(
