@@ -7,7 +7,7 @@ import Prim "mo:prim";
 //import Debug "../DebugOff";
 import Debug "mo:base/Debug";
 
-import Types "Types";
+import Types "../Types";
 
 /** isolates logic specific to calling BigMap's service interface
     from within the (more general) DSL expression language. */
