@@ -47,7 +47,7 @@ actor {
     // to do -- use all bits in the final hash, not just the first ones
     switch (x.size()) {
       case 0 0;
-      case 1 blowup(x[1]);
+      case 1 blowup(x[0]);
       case 2 { blowup(x[0]) << 0 +
                  blowup(x[1]) << 8 };
       case 3 { blowup(x[0]) << 0 +
