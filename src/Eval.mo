@@ -3,7 +3,7 @@ import Buf "mo:base/Buf";
 import List "mo:base/List";
 
 import Types "Types";
-import Call "Call";
+import CallBigMap "service/BigMap";
 
 //import Debug "../DebugOff";
 import Debug "mo:base/Debug";
@@ -101,7 +101,7 @@ public func eval(store: Store, env: Env, exp: Exp) : Res {
                   #err(
                     #callRequest(
                       Types.Init.empStack(),
-                      Call.callRequest(
+                      CallBigMap.callRequest(
                         #put(#value(v1),
                              #value(v2)))))
                 };
@@ -116,7 +116,7 @@ public func eval(store: Store, env: Env, exp: Exp) : Res {
                   #err(
                     #callRequest(
                       Types.Init.empStack(),
-                      Call.callRequest(
+                      CallBigMap.callRequest(
                         #get(#value(v))
                       )))
                 };
