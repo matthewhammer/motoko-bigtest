@@ -1,0 +1,20 @@
+{
+  "canisters": {
+    "BigMap": {
+      "main": "test/BigMap.mo"
+    },
+    "BigMapPutGet": {
+      "main": "test/BigMapPutGet.mo"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "vessel sources",
+      "output": "canisters/"
+    },
+    "start": {
+      "address": "127.0.0.1",
+      "port": 8000
+    }
+  }
+}
