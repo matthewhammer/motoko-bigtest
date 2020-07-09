@@ -81,11 +81,6 @@ Why even implement this new language if we already have Rust and Motoko?
 In terms of language design, Motoko programs and BigTest programs are
 attacking similar problems.
 
-For example, these two tests are very similar (intentionally):
-
- - Motoko-based `PutGet` test for BigMap ([`test/PutGet.mo`](https://github.com/dfinity/motoko-bigmap/blob/master/test/PutGet.mo))
- - `PutGet` as a BigTest test expression ([`test/BigTestPutGet.mo`](https://github.com/dfinity/motoko-bigmap/blob/master/test/BigTestPutGet.mo))
-
 In both settings, interacting with the Internet Computer interrupts
 ordinary control flow constructs, like simple loops, and the language
 uses techniques to hide this interruption from programmers, who do not
