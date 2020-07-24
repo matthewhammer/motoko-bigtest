@@ -1,5 +1,4 @@
 import Prim "mo:prim";
-import Buf "mo:base/Buf";
 import BigMap "canister:BigMap";
 import Iter "mo:base/Iter";
 import Debug "mo:base/Debug";

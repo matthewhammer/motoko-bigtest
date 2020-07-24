@@ -1,5 +1,5 @@
 import Iter "mo:base/Iter";
-import Buf "mo:base/Buf";
+import Buffer "mo:base/Buffer";
 import List "mo:base/List";
 
 import Types "Types";
@@ -160,7 +160,7 @@ public func eval(store: Store, env: Env, exp: Exp) : Res {
          assert false; loop { }
        };
   case (#buf(es)) {
-         let buf = Buf.Buf<Val>(0);
+         let buf = Buffer.Buffer<Val>(0);
          for (e in es.vals()) {
            switch (eval(store, env, e)) {
              case (#err(e)) return #err(e);
@@ -217,7 +217,7 @@ public func eval(store: Store, env: Env, exp: Exp) : Res {
        };
   case (#range (n, m)) {
          let r = Iter.range(n, m);
-         let buf = Buf.Buf<Val>(0);
+         let buf = Buffer.Buffer<Val>(0);
          for (i in r) {
            buf.add(#nat(i))
          };

@@ -1,7 +1,7 @@
 import List "mo:base/List";
 import AssocList "mo:base/AssocList";
 import Result "mo:base/Result";
-import Buf "mo:base/Buf";
+import Buffer "mo:base/Buffer";
 import Text "mo:base/Text";
 import Iter "mo:base/Iter";
 
@@ -71,7 +71,7 @@ public type Env = AssocList.AssocList<Text, Val>;
 public type Res = Result.Result<Val, Halt>;
 
 public type Store = {
-  bufs: Buf.Buf<Buf.Buf<Val>>;
+  bufs: Buffer.Buffer<Buffer.Buffer<Val>>;
 };
 
 // remaining work of an Exp to perform later, after a Call
@@ -98,7 +98,7 @@ public type State = {
 public module Init {
 public func empStore() : Store {
   {
-    bufs = Buf.Buf<Buf.Buf<Val>>(0);
+    bufs = Buffer.Buffer<Buffer.Buffer<Val>>(0);
   }
 };
 
