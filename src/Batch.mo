@@ -50,7 +50,7 @@ public class Batch() {
       let state : State =
         switch (Q.peekFront<State>(states)) {
          case null { return null }; // end loop
-         case (?s) { s };
+         case (?s) s;
         };
       Debug.print ("BigTest.Batch.nextCallRequest - state.stack = " # (debug_show state.stack));
       Debug.print ("BigTest.Batch.nextCallRequest - state.env = " # (debug_show state.env));
@@ -61,9 +61,11 @@ public class Batch() {
       Debug.print ("BigTest.Batch.nextCallRequest - result=" # (debug_show r));
       switch r {
       case (#ok(v)) {
-
              Debug.print ("Batch.nextCallRequest - postEval - result=" # (debug_show r));
-             states := Q.popFront<State>(states);
+             switch (Q.popFront<State>(states)) {
+               case null { assert false };
+               case (?(_, q)) { states := q };
+             };
            };
       case (#err(#callRequest(stack, call))) {
              state.stack := stack;

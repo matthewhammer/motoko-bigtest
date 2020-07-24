@@ -1,5 +1,4 @@
 import Prim "mo:prim";
-import Buf "mo:base/Buf";
 import BigMap "canister:BigMap";
 import Iter "mo:base/Iter";
 import Debug "mo:base/Debug";
@@ -44,7 +43,9 @@ actor {
   };
 
   // some defaults
-  var batch : TestBatch.Batch = newBatches([0, 1, 2, 4, 8, 128]);
+  var batch : TestBatch.Batch = newBatches([0, 1, 2, 4, 8
+                                            //,128 -- takes an hour or so
+                                           ]);
 
   public func reset(sizes : [Nat]) : async () {
     batch := newBatches(sizes)
