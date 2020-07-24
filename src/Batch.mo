@@ -48,9 +48,9 @@ public class Batch() {
   public func nextCallRequest() : ?Types.CallReq {
     loop {
       let state : State =
-        switch (Q.popFront<State>(states)) {
+        switch (Q.peekFront<State>(states)) {
          case null { return null }; // end loop
-         case (?(s, q)) { states := q; s };
+         case (?s) s;
         };
       Debug.print ("BigTest.Batch.nextCallRequest - state.stack = " # (debug_show state.stack));
       Debug.print ("BigTest.Batch.nextCallRequest - state.env = " # (debug_show state.env));
@@ -61,8 +61,11 @@ public class Batch() {
       Debug.print ("BigTest.Batch.nextCallRequest - result=" # (debug_show r));
       switch r {
       case (#ok(v)) {
-
              Debug.print ("Batch.nextCallRequest - postEval - result=" # (debug_show r));
+             switch (Q.popFront<State>(states)) {
+               case null { assert false };
+               case (?(_, q)) { states := q };
+             };
            };
       case (#err(#callRequest(stack, call))) {
              state.stack := stack;
