@@ -23,6 +23,7 @@ jobs:
        cd candiff
        cargo install --root /home/runner --path .
        cd ../..
+       echo "::add-path::/home/runner/bin"
     - uses: actions/checkout@v2
     - name: "didc help (sanity check)"
       run: didc --help
