@@ -20,9 +20,10 @@ jobs:
       run: |
        cd tools/didc
        cargo install --path .
-       cd ../
+       cd ..
        cd candiff
        cargo install --path .
+       cd ../..
     - name: "didc help (sanity check)"
       run: didc --help
     - name: "candiff help (sanity check)"
