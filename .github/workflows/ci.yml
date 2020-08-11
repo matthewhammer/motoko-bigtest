@@ -10,9 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: "install candid tools"
-      run: |
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - run: |
        wget https://github.com/dfinity/candid.git
-       cd "::add-path::candid"
        cargo install --path .
     - name: "install dfx"
       run: |
