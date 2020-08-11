@@ -11,7 +11,6 @@ jobs:
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
-    - uses: actions/checkout@v2
     - name: Checkout candid repo
       uses: actions/checkout@v2
       with:
@@ -24,6 +23,7 @@ jobs:
        cd candiff
        cargo install --path .
        cd ../..
+    - uses: actions/checkout@v2
     - name: "didc help (sanity check)"
       run: didc --help
     - name: "candiff help (sanity check)"
