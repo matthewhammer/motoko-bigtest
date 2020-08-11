@@ -8,11 +8,15 @@ jobs:
   tests:
     runs-on: ubuntu-18.04
     steps:
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
     - uses: actions/checkout@v2
     - name: Checkout candid repo
       uses: actions/checkout@v2
       with:
         repository: dfinity/candid
+    - name: Install candid tools
       run: cargo install --path .
     - name: "tool help (sanity check)"
       run: didc --help
