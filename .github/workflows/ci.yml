@@ -8,11 +8,11 @@ jobs:
   tests:
     runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Checkout candid repo
       uses: actions/checkout@v2
-        with:
-          repository: dfinity/candid
+      with:
+        repository: dfinity/candid
       - run: |
        cargo install --path .
     - name: "tool help (sanity check)"
