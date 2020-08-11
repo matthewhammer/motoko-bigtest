@@ -12,8 +12,8 @@ jobs:
     - name: "install candid tools"
       run: |
        wget https://github.com/dfinity/candid.git
-       cd candid
-       cargo install -path .
+       cd "::add-path::candid"
+       cargo install --path .
     - name: "install dfx"
       run: |
        wget https://sdk.dfinity.org/install.sh
