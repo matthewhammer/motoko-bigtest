@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
+    - name: "install candid tools"
+      run: |
+       wget https://github.com/dfinity/candid.git
+       cd candid
+       cargo install -path .
     - name: "install dfx"
       run: |
        wget https://sdk.dfinity.org/install.sh
