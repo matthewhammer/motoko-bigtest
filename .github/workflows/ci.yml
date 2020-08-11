@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
-    - name: "install candid tools"
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+    - name: Checkout candid repo
+      uses: actions/checkout@v2
         with:
-          toolchain: stable
+          repository: dfinity/candid
       - run: |
-       git clone https://github.com/dfinity/candid.git
-       cd candid
        cargo install --path .
+    - name: "tool help (sanity check)"
+      run: didc --help
+      run: candiff --help
     - name: "install dfx"
       run: |
        wget https://sdk.dfinity.org/install.sh
