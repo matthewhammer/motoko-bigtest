@@ -17,10 +17,15 @@ jobs:
       with:
         repository: dfinity/candid
     - name: Install candid tools
-      run: cargo install --path .
-    - name: "didc help (sanity chaeck)"
+      run: |
+       cd tools/didc
+       cargo install --path .
+       cd ../
+       cd candiff
+       cargo install --path .
+    - name: "didc help (sanity check)"
       run: didc --help
-    - name: "candiff help (sanity chaeck)"
+    - name: "candiff help (sanity check)"
       run: candiff --help
     - name: "install dfx"
       run: |
