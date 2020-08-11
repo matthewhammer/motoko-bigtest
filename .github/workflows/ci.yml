@@ -18,10 +18,10 @@ jobs:
     - name: Install candid tools
       run: |
        cd tools/didc
-       cargo install --path .
+       cargo install --root /home/runner/bin --path .
        cd ..
        cd candiff
-       cargo install --path .
+       cargo install --root /home/runner/bin --path .
        cd ../..
     - uses: actions/checkout@v2
     - name: "didc help (sanity check)"
