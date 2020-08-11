@@ -15,7 +15,8 @@ jobs:
         with:
           toolchain: stable
       - run: |
-       wget https://github.com/dfinity/candid.git
+       git clone https://github.com/dfinity/candid.git
+       cd candid
        cargo install --path .
     - name: "install dfx"
       run: |
