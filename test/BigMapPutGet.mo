@@ -73,10 +73,21 @@ actor {
            Debug.print ("doNextCall - result = " # (debug_show r));
            Debug.print "doNextCall - saving result...";
            batch.saveResult(r);
+           callLog.add((c, r));
            Debug.print "doNextCall end";
            true
          }
     }
+  };
+
+  public type CallReq = Types.CallReq;
+  public type CallRes = Types.Res;
+  public type CallLog = [(CallReq, CallRes)];
+
+  var callLog : Buffer<CallExp> = Buffer.Buffer(0);
+
+  public func getFullLog () async CallLog {
+    callLog.toArray()
   };
 
   // Bonus:
