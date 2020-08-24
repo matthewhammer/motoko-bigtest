@@ -32,4 +32,10 @@ echo BEGIN BigMapPutGet.log
 cat BigMapPutGet.log
 echo END BigMapPutGet.log
 
+echo BEGIN 'didc decode `cat BigMapPutGet.log`'
 didc decode `cat BigMapPutGet.log`
+echo END 'didc decode `cat BigMapPutGet.log`'
+
+echo BEGIN candiff compares a known log (left) and latest log (right):
+candiff `cat test/BigMapPutGet.log` `cat BigMapPutGet.log`
+echo END candiff comparison.
