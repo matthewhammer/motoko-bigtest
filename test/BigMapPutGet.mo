@@ -2,6 +2,7 @@ import Prim "mo:prim";
 import BigMap "canister:BigMap";
 import Iter "mo:base/Iter";
 import Debug "mo:base/Debug";
+import Buffer "mo:base/Buffer";
 
 import TestBatch "../src/Batch";
 import TestTypes "../src/Types";
@@ -80,13 +81,13 @@ actor {
     }
   };
 
-  public type CallReq = Types.CallReq;
-  public type CallRes = Types.Res;
+  public type CallReq = TestTypes.CallReq;
+  public type CallRes = TestTypes.Res;
   public type CallLog = [(CallReq, CallRes)];
 
-  var callLog : Buffer<CallExp> = Buffer.Buffer(0);
+  var callLog : Buffer.Buffer<(CallReq, CallRes)> = Buffer.Buffer(0);
 
-  public func getFullLog () async CallLog {
+  public func getFullLog () : async CallLog {
     callLog.toArray()
   };
 
