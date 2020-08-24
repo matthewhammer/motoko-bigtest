@@ -26,15 +26,15 @@ while [ "$LOOP" == "(true)" ]; do
     LOOP=$(dfx canister call BigMapPutGet doNextCall)
 done
 
-dfx canister call BigMapPutGet getFullLog --output raw > BigMapPutGet.log
+dfx canister call BigMapPutGet getFullLog --output raw > BigMapPutGet.raw
 
-echo BEGIN BigMapPutGet.log
-cat BigMapPutGet.log
-echo END BigMapPutGet.log
+echo BEGIN BigMapPutGet.raw
+cat BigMapPutGet.raw
+echo END BigMapPutGet.raw
 
-echo BEGIN 'didc decode `cat BigMapPutGet.log`'
-didc decode `cat BigMapPutGet.log`
-echo END 'didc decode `cat BigMapPutGet.log`'
+echo BEGIN 'didc decode `cat BigMapPutGet.raw` > BigMapPutGet.log'
+didc decode `cat BigMapPutGet.raw` > BigMapPutGet.log
+echo END 'didc decode `cat BigMapPutGet.raw`'
 
 echo BEGIN candiff compares a known log (left) and latest log (right):
 candiff `cat test/BigMapPutGet.log` `cat BigMapPutGet.log`
