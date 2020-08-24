@@ -44,7 +44,8 @@ actor {
   };
 
   // some defaults
-  var batch : TestBatch.Batch = newBatches([0, 1, 2, 4, 8
+  var batch : TestBatch.Batch = newBatches([0, 1
+                                            //,2, 4, 8 -- TEMP -- make this faster for CI iteration...
                                             //,128 -- takes an hour or so
                                            ]);
 
