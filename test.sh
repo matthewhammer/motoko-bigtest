@@ -33,7 +33,7 @@ cat BigMapPutGet.raw
 echo END BigMapPutGet.raw
 
 echo BEGIN 'didc decode `cat BigMapPutGet.raw` > BigMapPutGet.log'
-didc decode `cat BigMapPutGet.raw` > BigMapPutGet.log
+didc decode `cat BigMapPutGet.raw` -d .dfx/local/canisters/BigMapPutGet/BigMapPutGet.did -m getFullLog > BigMapPutGet.log 
 echo END 'didc decode `cat BigMapPutGet.raw`'
 
 echo BEGIN "candiff compares a known log (left) and latest log (right):"
