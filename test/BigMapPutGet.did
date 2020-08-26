@@ -1,0 +1,156 @@
+type Val = 
+ variant {
+   "bool": bool;
+   buf: nat;
+   "nat": nat;
+   nulll;
+   "opt": Val;
+   "text": text;
+   unit;
+ };
+type Stack = List;
+type Result = 
+ variant {
+   err: Halt;
+   ok: Val;
+ };
+type Res = Result;
+type List_3 = 
+ opt record {
+       record {
+         text;
+         Exp;
+       };
+       List_3;
+     };
+type List_2 = 
+ opt record {
+       record {
+         text;
+         Val;
+       };
+       List_2;
+     };
+type List = 
+ opt record {
+       Frame;
+       List;
+     };
+type Halt = 
+ variant {
+   assertFalse: Exp;
+   assertNonBool: record {
+                    Env;
+                    Exp;
+                    Val;
+                  };
+   callRequest: record {
+                  Stack;
+                  CallReq_2;
+                };
+   iterateNonBuffer: Val;
+   unboundVariable: record {
+                      Env;
+                      text;
+                    };
+ };
+type Frame = 
+ record {
+   Env;
+   Cont;
+ };
+type Exp = 
+ variant {
+   arms: vec Exp;
+   assertt: Exp;
+   block: vec Decl;
+   buf: vec Exp;
+   call: CallExp;
+   equal: record {
+            Exp;
+            Exp;
+          };
+   equiv: record {
+            Exp;
+            Exp;
+          };
+   iterate: record {
+              Exp;
+              text;
+              Exp;
+            };
+   labell: record {
+             text;
+             opt text;
+             Exp;
+           };
+   "opt": Exp;
+   range: record {
+            nat;
+            nat;
+          };
+   value: Val;
+   varr: text;
+ };
+type Env = AssocList;
+type Decl = 
+ record {
+   text;
+   Exp;
+ };
+type DebugInfo = 
+ record {
+   Stack;
+   Env;
+   opt Exp;
+ };
+type Cont = 
+ variant {
+   arms: vec Exp;
+   block: record {
+            text;
+            List_3;
+          };
+   iterate: record {
+              nat;
+              nat;
+              text;
+              Exp;
+            };
+   labell: record {
+             text;
+             opt text;
+           };
+ };
+type CallRes = Res;
+type CallReq_2 = 
+ variant {
+   get: vec nat8;
+   put: record {
+          vec nat8;
+          vec nat8;
+        };
+ };
+type CallReq = CallReq_2;
+type CallLog = 
+ vec record {
+       CallReq;
+       CallRes;
+     };
+type CallExp = 
+ variant {
+   get: Exp;
+   put: record {
+          Exp;
+          Exp;
+        };
+ };
+type AssocList = List_2;
+service : {
+  doNextCall: () -> (bool);
+  extend: (vec nat) -> () oneway;
+  getFullLog: () -> (CallLog);
+  peek: () -> (opt DebugInfo) query;
+  pushExp: (Exp) -> () oneway;
+  reset: (vec nat) -> ();
+}
