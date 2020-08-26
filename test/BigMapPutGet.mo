@@ -2,6 +2,7 @@ import Prim "mo:prim";
 import BigMap "canister:BigMap";
 import Iter "mo:base/Iter";
 import Debug "mo:base/Debug";
+import Buffer "mo:base/Buffer";
 
 import TestBatch "../src/Batch";
 import TestTypes "../src/Types";
@@ -43,7 +44,8 @@ actor {
   };
 
   // some defaults
-  var batch : TestBatch.Batch = newBatches([0, 1, 2, 4, 8
+  var batch : TestBatch.Batch = newBatches([0, 1
+                                            //,2, 4, 8 -- TEMP -- make this faster for CI iteration...
                                             //,128 -- takes an hour or so
                                            ]);
 
@@ -73,10 +75,21 @@ actor {
            Debug.print ("doNextCall - result = " # (debug_show r));
            Debug.print "doNextCall - saving result...";
            batch.saveResult(r);
+           callLog.add((c, r));
            Debug.print "doNextCall end";
            true
          }
     }
+  };
+
+  public type CallReq = TestTypes.CallReq;
+  public type CallRes = TestTypes.Res;
+  public type CallLog = [(CallReq, CallRes)];
+
+  var callLog : Buffer.Buffer<(CallReq, CallRes)> = Buffer.Buffer(0);
+
+  public func getFullLog () : async CallLog {
+    callLog.toArray()
   };
 
   // Bonus:
