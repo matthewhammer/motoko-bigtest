@@ -35,7 +35,7 @@ public type Exp = {
   #range: (Nat, Nat); // buffer all numbers in given range
   #iterate: (Exp, Text, Exp); // (buffer, var, body)
   #block: [Decl];
-  #opt: Exp;
+  #opt_: Exp;
   #value: Val;
 };
 
@@ -54,7 +54,7 @@ public type Val = {
   #nat: Nat;
   #text: Text; // remove? (currently unused)
   #buf: Nat;
-  #opt: Val;
+  #opt_: Val;
 };
 
 // Halt for call requests, assertion failures, other errors
@@ -137,7 +137,7 @@ public func equiv(store:Store, v1: Val, v2: Val) : Bool {
     case (#bool(b1), #bool(b2)) b1 == b2;
     case (#nat(n1), #nat(n2)) n1 == n2;
     case (#text(t1), #text(t2)) t1 == t2;
-    case (#opt(v1), #opt(v2)) equiv(store, v1, v2);
+    case (#opt_(v1), #opt_(v2)) equiv(store, v1, v2);
     case (#buf(b1), #buf(b2)) {
            if (b1 == b2) {
              true
@@ -171,7 +171,7 @@ public func equal(v1: Val, v2: Val) : Bool {
     case (#nat(n1), #nat(n2)) n1 == n2;
     case (#text(t1), #text(t2)) t1 == t2;
     case (#buf(b1), #buf(b2)) b1 == b2;
-    case (#opt(v1), #opt(v2)) equal(v1, v2);
+    case (#opt_(v1), #opt_(v2)) equal(v1, v2);
     case (_, _) false;
   };
 };

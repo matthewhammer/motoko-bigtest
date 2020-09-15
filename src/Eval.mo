@@ -87,9 +87,9 @@ public func evalStack(store: Store, stack:Stack, v: Val) : Res {
 public func eval(store: Store, env: Env, exp: Exp) : Res {
   switch exp {
     case (#value v) { #ok(v) };
-    case (#opt e) {
+    case (#opt_ e) {
            switch (eval(store, env, e)) {
-             case (#ok(v)) { #ok(#opt(v)) };
+             case (#ok(v)) { #ok(#opt_(v)) };
              case (#err(e)) { #err(e) };
            }
          };

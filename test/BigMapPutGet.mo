@@ -26,7 +26,7 @@ actor {
                          #block(
                            [
                              ("x", #call(#get(#varr("i")))),
-                             ("_", #assertt(#equal(#opt(#varr("i")), #varr("x"))))
+                             ("_", #assertt(#equal(#opt_(#varr("i")), #varr("x"))))
                            ])
                 )),
         ]))
