@@ -25,7 +25,7 @@ module {
              let res = await BigMap.get(k);
              switch res {
                case null { #ok(#nulll) };
-               case (?r) { #ok(#opt(fromNat8s(r))) };
+               case (?r) { #ok(#optt(fromNat8s(r))) };
              }
            };
       }
