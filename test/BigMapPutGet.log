@@ -1,1 +1,28 @@
-(vec { record { 0 = variant { put = record { 0 = vec { 0; }; 1 = vec { 0; }; } }; 1 = variant { ok = variant { unit = null } }; }; record { 0 = variant { get = vec { 0; } }; 1 = variant { ok = variant { opt = variant { nat = 0 } } }; }; record { 0 = variant { put = record { 0 = vec { 0; }; 1 = vec { 0; }; } }; 1 = variant { ok = variant { unit = null } }; }; record { 0 = variant { put = record { 0 = vec { 1; }; 1 = vec { 1; }; } }; 1 = variant { ok = variant { unit = null } }; }; record { 0 = variant { get = vec { 0; } }; 1 = variant { ok = variant { opt = variant { nat = 0 } } }; }; record { 0 = variant { get = vec { 1; } }; 1 = variant { ok = variant { opt = variant { nat = 1 } } }; }; })
+(
+  vec {
+    record {
+      variant { put = record { vec { 0 }; vec { 0 } } };
+      variant { ok = variant { unit } };
+    };
+    record {
+      variant { get = vec { 0 } };
+      variant { ok = variant { optt = variant { "nat" = 0 } } };
+    };
+    record {
+      variant { put = record { vec { 0 }; vec { 0 } } };
+      variant { ok = variant { unit } };
+    };
+    record {
+      variant { put = record { vec { 1 }; vec { 1 } } };
+      variant { ok = variant { unit } };
+    };
+    record {
+      variant { get = vec { 0 } };
+      variant { ok = variant { optt = variant { "nat" = 0 } } };
+    };
+    record {
+      variant { get = vec { 1 } };
+      variant { ok = variant { optt = variant { "nat" = 1 } } };
+    };
+  },
+)
