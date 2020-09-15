@@ -32,6 +32,10 @@ echo BEGIN BigMapPutGet.raw
 cat BigMapPutGet.raw
 echo END BigMapPutGet.raw
 
+echo BEGIN echo .dfx/local/canisters/BigMapPutGet/BigMapPutGet.did
+echo .dfx/local/canisters/BigMapPutGet/BigMapPutGet.did
+echo END
+
 echo BEGIN 'didc decode `cat BigMapPutGet.raw` > BigMapPutGet.log'
 didc decode `cat BigMapPutGet.raw` -d .dfx/local/canisters/BigMapPutGet/BigMapPutGet.did -m getFullLog > BigMapPutGet.log 
 echo END 'didc decode `cat BigMapPutGet.raw`'
