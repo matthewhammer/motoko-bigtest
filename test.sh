@@ -44,6 +44,10 @@ echo BEGIN "test/BigMapPutGet.log (expected log)"
 cat test/BigMapPutGet.log
 echo END "test/BigMapPutGet.log"
 
+echo BEGIN "didc diff compares a expected log (left) and latest captured log (right):"
+didc diff "`cat test/BigMapPutGet.log`" "`cat BigMapPutGet.log`"
+echo END candiff comparison.
+
 echo BEGIN "candiff compares a expected log (left) and latest captured log (right):"
 candiff diff "`cat test/BigMapPutGet.log`" "`cat BigMapPutGet.log`"
 echo END candiff comparison.
